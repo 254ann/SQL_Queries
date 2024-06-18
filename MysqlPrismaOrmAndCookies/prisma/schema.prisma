@@ -1,0 +1,18 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model events {
+  id       Int    @id @default(autoincrement())
+  imageUrl String @db.VarChar(255)
+  title    String @unique(map: "Events_title_key")
+  price    Int
+  date     String @db.VarChar(255)
+  location String
+  company  String @db.VarChar(255)
+}
